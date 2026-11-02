@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scrnarefgenerator"
+version = "0.1.0"
+description = "Conditional sparse-count scRNA-seq reference simulator"
+requires-python = ">=3.10"
+dependencies = [
+  "anndata>=0.10",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scikit-learn>=1.3",
+  "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+plot = [
+  "matplotlib>=3.7",
+  "umap-learn>=0.5",
+]
+
+[project.scripts]
+scrnarefgen = "scrnarefgenerator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
